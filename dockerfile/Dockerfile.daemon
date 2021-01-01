@@ -1,0 +1,10 @@
+FROM alpine:3.12.1
+WORKDIR /aria2
+RUN apk update
+RUN apk upgrade
+RUN apk add aria2
+RUN mkdir -p /aria2/config
+RUN mkdir -p /aria2/logs
+RUN mkdir -p /aria2/downloads
+COPY config/aria2.conf config/aria2.conf
+CMD ["/usr/bin/aria2c", "--conf-path=/aria2/config/aria2.conf"]
